@@ -44,7 +44,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", engine);
 
-const sessionOptions = {
+const sessionOptions = { 
   secret: "mysecretcode",
   resave: false,
   saveUninitialized: true,
