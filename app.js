@@ -73,10 +73,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// Root Route
-app.get("/", (req, res) => {
-  res.render("listings/home.ejs");
-});
+// // Root Route
+// app.get("/", (req, res) => {
+//   res.render("listings/home.ejs");
+// });
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
