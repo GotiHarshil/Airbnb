@@ -22,7 +22,8 @@ const userRouter = require("./routes/user.js");
 
 // const { ppid } = require("process");
 
-const mongo_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// const mongo_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const dbURL = process.env.ATLASDB_URL;
 
 main()
   .then(() => {
@@ -33,7 +34,7 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(mongo_URL);
+  await mongoose.connect(dbURL);
 }
 
 app.set("view engine", "ejs");
@@ -73,10 +74,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// // Root Route
-// app.get("/", (req, res) => {
-//   res.render("listings/home.ejs");
-// });
+  // // Root Route
+  // app.get("/", (req, res) => {
+  //   res.render("listings/home.ejs");
+  // });
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
