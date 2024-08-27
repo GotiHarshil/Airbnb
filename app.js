@@ -22,7 +22,6 @@ const userRouter = require("./routes/user.js");
 
 // const { ppid } = require("process");
 
-// const mongo_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbURL = process.env.ATLASDB_URL;
 
 main()
@@ -48,7 +47,7 @@ app.engine("ejs", engine);
 const store = MongoStore.create({
   mongoUrl: dbURL,
   crypto: {
-    secret: "mysecretcode",
+    secret: process.env.SECRET,
   },
   touchAfter: 24 * 3600,
 });
